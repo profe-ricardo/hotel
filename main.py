@@ -51,7 +51,17 @@ import models.database as conn
 def main():
     conector = conn.conn()
     if conector:
-        print("Se conectó!")
+        cursor = conector.cursor()
+        datos = cursor.execute("select nombre from hola.usuarios")
+        datos = cursor.fetchall()
+        print(f"Datos ahora: {datos}")
+
+        cursor.execute("insert into hola.usuarios (nombre) values ('Jhordan')")
+        conector.commit()
+        datos = cursor.execute("select nombre from hola.usuarios")
+        datos = cursor.fetchall()
+        print(f"Datos ahora: {datos}")
+        # print(f"Datos obtenidos: {datos}")
     else:
         print("Fallaste")
 
