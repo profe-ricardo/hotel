@@ -3,11 +3,16 @@ from models.people.guest import Guest
 
 class BookingService:
     def __init__(self):
-        self.rooms = []
-        self.guests = []
+        self.rooms = [] # [103, 104, 105, 106]
+        self.guests = [] # 
     
-    def check_room_availability(self, room):
-        pass
+    def getDisponibilidad(room):
+        disponibilidad = Room.getDisponibilidad(room)
+
+        if disponibilidad and not disponibilidad["error"]:
+            return True
+        else:
+            return False
     
-    def book_room(self, guest, room):
+    def setReserva(self, guest, room):
         pass
